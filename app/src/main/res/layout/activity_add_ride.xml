@@ -6,134 +6,137 @@
     android:layout_height="match_parent"
     tools:context=".AddRideActivity">
 
-    <LinearLayout
-        android:id="@+id/TitleLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="0dp"
-            app:srcCompat="@drawable/mesi_bajk_logo" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="6dp"
-            android:paddingBottom="4dp"
-            android:text=" -  Rezervacija kolesa"
-            android:textColor="#80B641"
-            android:textSize="20sp" />
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/TitleLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-    <Spinner
-        android:id="@+id/spinner_rider"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:autofillHints="name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TitleLayout" />
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="0dp"
+                    app:srcCompat="@drawable/mesi_bajk_logo" />
 
-    <Spinner
-        android:id="@+id/spinner_sector"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:autofillHints="name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_rider" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="6dp"
+                    android:paddingBottom="4dp"
+                    android:text=" -  Rezervacija kolesa"
+                    android:textColor="#80B641"
+                    android:textSize="20sp" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="32dp"
-        android:gravity="left"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinner_sector">
+            </LinearLayout>
 
-        <EditText
-            android:id="@+id/startTime"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginHorizontal="30dp"
-            android:layout_weight="1"
-            android:inputType="date"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_sector" />
+            <Spinner
+                android:id="@+id/spinner_bike"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp" />
 
-        <EditText
-            android:id="@+id/endDate"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginHorizontal="30dp"
-            android:layout_weight="1"
-            android:inputType="date"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_sector" />
+            <EditText
+                android:id="@+id/edit_text_rider"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp" />
 
-    </LinearLayout>
+            <Spinner
+                android:id="@+id/spinner_department"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp" />
 
-    <SeekBar
-        android:id="@+id/seekBarKm"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout9" />
+            <LinearLayout
+                android:id="@+id/linearLayout9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="32dp"
+                android:gravity="left"
+                android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textKm"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/seekBarKm"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="32dp"
-        android:text="km"
-        android:textSize="24sp"
-        android:textAlignment="viewEnd"/>
+                <EditText
+                    android:id="@+id/startTime"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_weight="1"
+                    android:inputType="date" />
 
-    <Spinner
-        android:id="@+id/spinner_purpose"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:autofillHints="name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textKm" />
+                <EditText
+                    android:id="@+id/endTime"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_weight="1"
+                    android:inputType="date" />
 
-    <Button
-        android:layout_width="160dp"
-        android:layout_height="64dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="16dp"
-        android:text="Rezerviraj"
-        android:textSize="16sp"
-        android:textColor="@color/white"
-        android:background="@drawable/bike_background" />
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/seekBarKm"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textKm"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/seekBarKm"
+                android:text="km"
+                android:textSize="24sp"
+                android:textAlignment="viewEnd"/>
+
+            <Spinner
+                android:id="@+id/spinner_purpose"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:autofillHints="name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/add_ride_btn"
+                android:layout_width="160dp"
+                android:layout_height="64dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="16dp"
+                android:text="Rezerviraj"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:background="@drawable/bike_background" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

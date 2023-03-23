@@ -9,6 +9,6 @@ import java.sql.SQLException;
 public class DatabaseConfigUtilJava extends OrmLiteConfigUtil {
     public static void main(String[] args) throws SQLException, IOException {
         Class<?>[] classes = new Class[]{Bike.class, Ride.class};
-        writeConfigFile(new File("C:/Users/Nejc/AndroidStudioProjects/ExerciseMesiBike1/app/src/main/res/raw/ormlite_config.txt"), classes);
+        writeConfigFile(new File("C:/Users/Nejc/AndroidStudioProjects/MesiBajk/app/src/main/res/raw/ormlite_config.txt"), classes);
     }
 }

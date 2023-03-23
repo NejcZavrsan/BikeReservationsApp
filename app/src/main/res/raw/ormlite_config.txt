@@ -1,5 +1,5 @@
 #
-# generated on 2023/03/23 11:26:30
+# generated on 2023/03/23 07:28:40
 #
 # --table-start--
 dataClass=com.example.mesibajk.Bike
@@ -14,7 +14,6 @@ fieldName=name
 # --field-end--
 # --field-start--
 fieldName=ride
-columnName=ride
 foreign=true
 foreignAutoRefresh=true
 maxForeignAutoRefreshLevel=2
@@ -28,7 +27,11 @@ tableName=ride
 # --table-fields-start--
 # --field-start--
 fieldName=id
-id=true
+generatedId=true
+unique=true
+# --field-end--
+# --field-start--
+fieldName=id_bike
 # --field-end--
 # --field-start--
 fieldName=user

@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">MesiBajk</string>
+
+    <string-array name="bikes_array">
+        <item>Bike1</item>
+        <item>Bike2</item>
+        <item>Bike3</item>
+        <item>Bike4</item>
+        <item>Bike5</item>
+        <item>Bike6</item>
+        <item>Bike7</item>
+    </string-array>
+
+    <string-array name="departments_array">
+        <item>Razvoj</item>
+        <item>Prodaja</item>
+        <item>Marketing</item>
+        <item>Proizvodnja</item>
+    </string-array>
+
+    <string-array name="purpose_array">
+        <item>Privatni</item>
+        <item>Sluzbeni</item>
+    </string-array>
+</resources>

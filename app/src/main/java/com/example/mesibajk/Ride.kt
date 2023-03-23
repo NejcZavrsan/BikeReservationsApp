@@ -4,7 +4,7 @@ import com.j256.ormlite.field.DatabaseField
 
 class Ride() {
 
-    @DatabaseField(id = true)
+    @DatabaseField(generatedId = true, unique = true)
     var id: Int? = 0
 
     @DatabaseField
@@ -28,8 +28,7 @@ class Ride() {
     @DatabaseField
     var purpose: String? = ""
 
-    constructor(id: Int, id_bike: Int, user: String, department: String, start_time: Int, end_time: Int, distance: Int, purpose: String) : this() {
-        this.id = id
+    constructor(id_bike: Int, user: String, department: String, start_time: Int, end_time: Int, distance: Int, purpose: String) : this() {
         this.id_bike = id_bike
         this.user = user
         this.department = department

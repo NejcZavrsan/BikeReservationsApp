@@ -14,7 +14,7 @@ class Bike() {
         foreign = true,
         foreignAutoRefresh = true
     )
-    var ride: Ride? = Ride()
+    var ride: Ride? = null
 
     constructor(id: Int, name: String) : this() {
         this.id = id

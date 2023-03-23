@@ -24,22 +24,22 @@ class MainActivity : AppCompatActivity() {
         // Check first launch info
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE)
         val isFirstLaunch: Boolean = sharedPreferences.getBoolean(FIRST_LAUNCH, true)
+        if (isFirstLaunch) {
+            createSevenBikes()
+            Log.d("test", "At first launch")
+        }
+        Log.d("test", "At all launches")
 
         // Instantiate helper and dao
         dbHelper = OpenHelperManager.getHelper(this, DatabaseHelper::class.java)
         bikeDao = dbHelper.getBikeRuntimeExceptionDao()!!
 
-        if (isFirstLaunch) {
-            createSevenBikes()
-            Log.d("test", "Was first launch")
-        }
-        Log.d("test", "After if first launch statement")
         doBikeDataStuff()
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
-            val intentMakeReservation = Intent(this, AddSimpleRideActivity::class.java)
-            startActivity(intentMakeReservation)
+            val intentAddRide = Intent(this, AddRideActivity::class.java)
+            startActivity(intentAddRide)
 
         }
 

@@ -29,7 +29,6 @@ class AddSimpleRideActivity : AppCompatActivity() {
         addRideButton.setOnClickListener {
             val newRide = Ride(
                 1,
-                1,
                 inputRider.text.toString(),
                 inputSector.text.toString(),
                 inputStartTime.text.toString().toInt(),
