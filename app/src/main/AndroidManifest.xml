@@ -24,10 +24,6 @@
             android:name=".AddRideActivity"
             android:exported="false">
         </activity>
-        <activity
-            android:name=".AddSimpleRideActivity"
-            android:exported="false">
-        </activity>
     </application>
 
 </manifest>

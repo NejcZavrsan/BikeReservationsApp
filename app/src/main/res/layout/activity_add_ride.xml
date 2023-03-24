@@ -151,7 +151,7 @@
                     android:id="@+id/textDistance"
                     android:layout_width="48dp"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/seekBarKm"
+                    app:layout_constraintTop_toBottomOf="@id/seekBarDistance"
                     android:text="3"
                     android:textSize="24sp"
                     android:textAlignment="viewEnd"/>
@@ -160,7 +160,7 @@
                     android:id="@+id/km"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/seekBarKm"
+                    app:layout_constraintTop_toBottomOf="@id/seekBarDistance"
                     android:text="@string/km"
                     android:textSize="24sp"
                     android:textAlignment="viewStart"/>
