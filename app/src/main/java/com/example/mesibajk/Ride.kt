@@ -17,10 +17,10 @@ class Ride() {
     var department: String? = ""
 
     @DatabaseField
-    var start_time: Int? = 0
+    var start_time: Long? = 0
 
     @DatabaseField
-    var end_time: Int? = 0
+    var end_time: Long? = 0
 
     @DatabaseField
     var distance: Int? = 0
@@ -28,7 +28,7 @@ class Ride() {
     @DatabaseField
     var purpose: String? = ""
 
-    constructor(id_bike: Int, user: String, department: String, start_time: Int, end_time: Int, distance: Int, purpose: String) : this() {
+    constructor(id_bike: Int, user: String, department: String, start_time: Long, end_time: Long, distance: Int, purpose: String) : this() {
         this.id_bike = id_bike
         this.user = user
         this.department = department

@@ -21,6 +21,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Instantiate helper and dao
+        dbHelper = OpenHelperManager.getHelper(this, DatabaseHelper::class.java)
+        bikeDao = dbHelper.getBikeRuntimeExceptionDao()!!
+
         // Check first launch info
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE)
         val isFirstLaunch: Boolean = sharedPreferences.getBoolean(FIRST_LAUNCH, true)
@@ -29,10 +33,6 @@ class MainActivity : AppCompatActivity() {
             Log.d("test", "At first launch")
         }
         Log.d("test", "At all launches")
-
-        // Instantiate helper and dao
-        dbHelper = OpenHelperManager.getHelper(this, DatabaseHelper::class.java)
-        bikeDao = dbHelper.getBikeRuntimeExceptionDao()!!
 
         doBikeDataStuff()
 
