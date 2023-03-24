@@ -77,7 +77,7 @@
                 <EditText
                 android:id="@+id/edit_text_rider"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="64dp"
                 android:hint="@string/vnesi_ime"
                 android:autofillHints="name"/>
 
