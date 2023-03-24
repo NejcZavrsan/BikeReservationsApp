@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
 import com.j256.ormlite.android.apptools.OpenHelperManager
 import com.j256.ormlite.dao.RuntimeExceptionDao
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -98,26 +99,31 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                 ":" +
                 rideTime["end_MM"] +
                 ":00"
-
         val startUnixTime = dateToUnix(startDateTime)
         val endUnixTime = dateToUnix(endDateTime)
-        Log.d("test", "Unix start"+startUnixTime.toString())
-        Log.d("test", "Unix end"+endUnixTime.toString())
 
-        val newRide = Ride(
-            inputBikeId,
-            "inputRiderView.text.toString()",
-            inputDepartment,
-            startUnixTime!!,
-            endUnixTime!!,
-            seekBarEndpoint,
-            inputPurpose
-        )
-        rideDao!!.create(newRide)
-        val listOfRides = rideDao!!.queryForAll()
-        Log.d("test", listOfRides.toString())
-        Toast.makeText(this, "Rezervacija uspešno shranjena", Toast.LENGTH_SHORT).show()
-        onBackPressed()
+        if (startUnixTime != null && endUnixTime != null) {
+            Log.d("test", "Unix start"+startUnixTime.toString())
+            Log.d("test", "Unix end"+endUnixTime.toString())
+
+            val newRide = Ride(
+                inputBikeId,
+                "inputRiderView.text.toString()",
+                inputDepartment,
+                startUnixTime!!,
+                endUnixTime!!,
+                seekBarEndpoint,
+                inputPurpose
+            )
+            rideDao!!.create(newRide)
+            val listOfRides = rideDao!!.queryForAll()
+            Log.d("test", listOfRides.toString())
+            Toast.makeText(this, "Rezervacija uspešno shranjena", Toast.LENGTH_SHORT).show()
+            onBackPressed()
+        } else {
+            Toast.makeText(this, "Izberite termin rezervacije", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
 
@@ -205,10 +211,15 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
     }
 
     fun dateToUnix(date: String): Long? {
-        var format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-        var date: Date? = format.parse(date)
-        var timestamp: Long? = date?.time
-        return timestamp
+        try {
+            var format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+            var date: Date? = format.parse(date)
+            var timestamp: Long? = date?.time
+            return timestamp
+        } catch (e: ParseException) {
+            e.printStackTrace()
+            return null
+        }
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
