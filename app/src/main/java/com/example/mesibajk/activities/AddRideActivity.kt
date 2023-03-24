@@ -1,4 +1,4 @@
-package com.example.mesibajk.Activities
+package com.example.mesibajk.activities
 
 import android.os.Bundle
 import android.util.Log

@@ -1,4 +1,4 @@
-package com.example.mesibajk.Activities
+package com.example.mesibajk.activities
 
 import android.content.Context
 import android.content.Intent
@@ -7,11 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.mesibajk.Bike
 import com.example.mesibajk.DatabaseHelper
 import com.example.mesibajk.R
 import com.example.mesibajk.Ride
+import com.example.mesibajk.activities.AddRideActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.j256.ormlite.android.apptools.OpenHelperManager
 import com.j256.ormlite.dao.RuntimeExceptionDao
@@ -22,6 +24,20 @@ class MainActivity : AppCompatActivity() {
     lateinit var sharedPreferences: SharedPreferences
     lateinit var bikeDao: RuntimeExceptionDao<Bike, Int>
     lateinit var rideDao: RuntimeExceptionDao<Ride, Int>
+    lateinit var bike1tab: LinearLayout
+    lateinit var bike2tab: LinearLayout
+    lateinit var bike3tab: LinearLayout
+    lateinit var bike4tab: LinearLayout
+    lateinit var bike5tab: LinearLayout
+    lateinit var bike6tab: LinearLayout
+    lateinit var bike7tab: LinearLayout
+    lateinit var bike1Name: TextView
+    lateinit var bike2Name: TextView
+    lateinit var bike3Name: TextView
+    lateinit var bike4Name: TextView
+    lateinit var bike5Name: TextView
+    lateinit var bike6Name: TextView
+    lateinit var bike7Name: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +67,52 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         populateUI()
         setFirstLaunchFalse()
+        setOnClickListeners()
+    }
+
+    private fun setOnClickListeners() {
+        bike1tab = findViewById(R.id.bike1tab)
+        bike1tab.setOnClickListener {
+            val intentBikeStats = Intent(this, BikeStatsActivity::class.java)
+            intentBikeStats.putExtra("bike", bike1Name.text)
+            startActivity(intentBikeStats)
+        }
+        bike2tab = findViewById(R.id.bike2tab)
+        bike2tab.setOnClickListener {
+            val intentBikeStats = Intent(this, BikeStatsActivity::class.java)
+            intentBikeStats.putExtra("bike", bike2Name.text)
+            startActivity(intentBikeStats)
+        }
+        bike3tab = findViewById(R.id.bike3tab)
+        bike3tab.setOnClickListener {
+            val intentBikeStats = Intent(this, BikeStatsActivity::class.java)
+            intentBikeStats.putExtra("bike", bike3Name.text)
+            startActivity(intentBikeStats)
+        }
+        bike4tab = findViewById(R.id.bike4tab)
+        bike4tab.setOnClickListener {
+            val intentBikeStats = Intent(this, BikeStatsActivity::class.java)
+            intentBikeStats.putExtra("bike", bike4Name.text)
+            startActivity(intentBikeStats)
+        }
+        bike5tab = findViewById(R.id.bike5tab)
+        bike5tab.setOnClickListener {
+            val intentBikeStats = Intent(this, BikeStatsActivity::class.java)
+            intentBikeStats.putExtra("bike", bike5Name.text)
+            startActivity(intentBikeStats)
+        }
+        bike6tab = findViewById(R.id.bike6tab)
+        bike6tab.setOnClickListener {
+            val intentBikeStats = Intent(this, BikeStatsActivity::class.java)
+            intentBikeStats.putExtra("bike", bike6Name.text)
+            startActivity(intentBikeStats)
+        }
+        bike7tab = findViewById(R.id.bike7tab)
+        bike7tab.setOnClickListener {
+            val intentBikeStats = Intent(this, BikeStatsActivity::class.java)
+            intentBikeStats.putExtra("bike", bike7Name.text)
+            startActivity(intentBikeStats)
+        }
     }
 
     private fun createSevenBikes() {
@@ -77,13 +139,13 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("test", listOfBikes.toString())
 
-        val bike1Name = findViewById<TextView>(R.id.bike1_name)
-        val bike2Name = findViewById<TextView>(R.id.bike2_name)
-        val bike3Name = findViewById<TextView>(R.id.bike3_name)
-        val bike4Name = findViewById<TextView>(R.id.bike4_name)
-        val bike5Name = findViewById<TextView>(R.id.bike5_name)
-        val bike6Name = findViewById<TextView>(R.id.bike6_name)
-        val bike7Name = findViewById<TextView>(R.id.bike7_name)
+        bike1Name = findViewById<TextView>(R.id.bike1_name)
+        bike2Name = findViewById<TextView>(R.id.bike2_name)
+        bike3Name = findViewById<TextView>(R.id.bike3_name)
+        bike4Name = findViewById<TextView>(R.id.bike4_name)
+        bike5Name = findViewById<TextView>(R.id.bike5_name)
+        bike6Name = findViewById<TextView>(R.id.bike6_name)
+        bike7Name = findViewById<TextView>(R.id.bike7_name)
         val bike1Occupancy = findViewById<TextView>(R.id.bike1_occupancy)
         val bike2Occupancy = findViewById<TextView>(R.id.bike2_occupancy)
         val bike3Occupancy = findViewById<TextView>(R.id.bike3_occupancy)
