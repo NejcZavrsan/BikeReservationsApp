@@ -9,11 +9,10 @@ import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.example.mesibajk.Bike
-import com.example.mesibajk.DatabaseHelper
+import com.example.mesibajk.model.Bike
+import com.example.mesibajk.database.DatabaseHelper
 import com.example.mesibajk.R
-import com.example.mesibajk.Ride
-import com.example.mesibajk.activities.AddRideActivity
+import com.example.mesibajk.model.Ride
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.j256.ormlite.android.apptools.OpenHelperManager
 import com.j256.ormlite.dao.RuntimeExceptionDao

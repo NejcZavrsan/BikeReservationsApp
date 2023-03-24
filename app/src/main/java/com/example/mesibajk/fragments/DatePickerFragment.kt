@@ -1,4 +1,4 @@
-package com.example.mesibajk
+package com.example.mesibajk.fragments
 
 import android.app.DatePickerDialog
 import android.app.Dialog

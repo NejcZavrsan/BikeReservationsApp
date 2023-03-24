@@ -1,7 +1,10 @@
-package com.example.mesibajk
+package com.example.mesibajk.database
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
+import com.example.mesibajk.model.Bike
+import com.example.mesibajk.R
+import com.example.mesibajk.model.Ride
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper
 import com.j256.ormlite.dao.Dao
 import com.j256.ormlite.dao.RuntimeExceptionDao
@@ -16,7 +19,8 @@ class DatabaseHelper(
     DATABASE_NAME,
     null,
     DATABASE_VERSION,
-    R.raw.ormlite_config) {
+    R.raw.ormlite_config
+) {
 
     private var bikeDao: Dao<Bike, Int>? = null
     private var bikeRuntimeExceptionDao: RuntimeExceptionDao<Bike, Int>? = null

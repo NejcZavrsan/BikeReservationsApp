@@ -1,6 +1,6 @@
-package com.example.exercisemesibike1
+package com.example.mesibajk.database
 
-import com.example.mesibajk.Bike
+import com.example.mesibajk.model.Bike
 import com.j256.ormlite.android.apptools.OrmLiteConfigUtil
 
 class DatabaseConfigUtil: OrmLiteConfigUtil() {

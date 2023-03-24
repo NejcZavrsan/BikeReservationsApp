@@ -2,7 +2,7 @@
 # generated on 2023/03/24 02:20:50
 #
 # --table-start--
-dataClass=com.example.mesibajk.Bike
+dataClass=com.example.mesibajk.model.Bike
 tableName=bike
 # --table-fields-start--
 # --field-start--
@@ -22,7 +22,7 @@ maxForeignAutoRefreshLevel=2
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.example.mesibajk.Ride
+dataClass=com.example.mesibajk.model.Ride
 tableName=ride
 # --table-fields-start--
 # --field-start--

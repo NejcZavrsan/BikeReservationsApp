@@ -1,5 +1,7 @@
-package com.example.mesibajk;
+package com.example.mesibajk.database;
 
+import com.example.mesibajk.model.Bike;
+import com.example.mesibajk.model.Ride;
 import com.j256.ormlite.android.apptools.OrmLiteConfigUtil;
 
 import java.io.File;

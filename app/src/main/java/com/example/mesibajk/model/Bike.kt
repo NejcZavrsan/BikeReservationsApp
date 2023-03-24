@@ -1,4 +1,4 @@
-package com.example.mesibajk
+package com.example.mesibajk.model
 
 import com.j256.ormlite.field.DatabaseField
 
