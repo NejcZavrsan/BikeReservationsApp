@@ -1,10 +1,11 @@
-package com.example.mesibajk
+package com.example.mesibajk.Activities
 
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mesibajk.*
 import com.google.android.material.textfield.TextInputLayout
 import com.j256.ormlite.android.apptools.OpenHelperManager
 import com.j256.ormlite.dao.RuntimeExceptionDao
@@ -19,6 +20,7 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
     lateinit var spinnerBike: Spinner
     lateinit var spinnerDepartment: Spinner
     lateinit var spinnerPurpose: Spinner
+    lateinit var inputRiderView: EditText
     lateinit var startTimeView: TextView
     lateinit var startDateView: TextView
     lateinit var endTimeView: TextView
@@ -43,7 +45,7 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         rideDao = dbHelper.getRideRuntimeExceptionDao()!!
 
         // setup UI
-        val inputRiderView = findViewById<EditText>(R.id.edit_text_rider)
+        inputRiderView = findViewById<EditText>(R.id.edit_text_rider)
         val inputRiderTil = findViewById<TextInputLayout>(R.id.edit_text_rider_til)
         textDistance = findViewById(R.id.textDistance)
         startTimeView = findViewById<EditText>(R.id.startTime)
@@ -103,12 +105,14 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         val endUnixTime = dateToUnix(endDateTime)
 
         if (startUnixTime != null && endUnixTime != null) {
-            Log.d("test", "Unix start"+startUnixTime.toString())
-            Log.d("test", "Unix end"+endUnixTime.toString())
+            Log.d("test", "DateTime start: $startDateTime")
+            Log.d("test", "DateTime endt: $endDateTime")
+            Log.d("test", "Unix start: $startUnixTime")
+            Log.d("test", "Unix end: $endUnixTime")
 
             val newRide = Ride(
                 inputBikeId,
-                "inputRiderView.text.toString()",
+                inputRiderView.text.toString(),
                 inputDepartment,
                 startUnixTime!!,
                 endUnixTime!!,
@@ -210,11 +214,11 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         spinnerPurpose.onItemSelectedListener = this
     }
 
-    fun dateToUnix(date: String): Long? {
+    fun dateToUnix(dateToConvert: String): Long? {
         try {
-            var format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-            var date: Date? = format.parse(date)
-            var timestamp: Long? = date?.time
+            val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.GERMAN)
+            val date: Date? = format.parse(dateToConvert)
+            val timestamp: Long? = date?.time
             return timestamp
         } catch (e: ParseException) {
             e.printStackTrace()

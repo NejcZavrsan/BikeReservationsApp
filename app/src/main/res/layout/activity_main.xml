@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -53,14 +53,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:gravity="end">
 
                     <TextView
                         android:id="@+id/bike1_occupancy"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:layout_weight="1"
                         android:text="@string/frej"
                         android:textAlignment="viewEnd"
                         android:textSize="24sp" />
@@ -101,14 +101,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:gravity="end">
 
                     <TextView
                         android:id="@+id/bike2_occupancy"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:layout_weight="1"
                         android:text="@string/frej"
                         android:textAlignment="viewEnd"
                         android:textSize="24sp" />
@@ -148,14 +148,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:gravity="end">
 
                     <TextView
                         android:id="@+id/bike3_occupancy"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:layout_weight="1"
                         android:text="@string/frej"
                         android:textAlignment="viewEnd"
                         android:textSize="24sp" />
@@ -195,14 +195,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:gravity="end">
 
                     <TextView
                         android:id="@+id/bike4_occupancy"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:layout_weight="1"
                         android:text="@string/frej"
                         android:textAlignment="viewEnd"
                         android:textSize="24sp" />
@@ -242,14 +242,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:gravity="end">
 
                     <TextView
                         android:id="@+id/bike5_occupancy"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:layout_weight="1"
                         android:text="@string/frej"
                         android:textAlignment="viewEnd"
                         android:textSize="24sp" />
@@ -289,14 +289,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:gravity="end">
 
                     <TextView
                         android:id="@+id/bike6_occupancy"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:layout_weight="1"
                         android:text="@string/frej"
                         android:textAlignment="viewEnd"
                         android:textSize="24sp" />
@@ -337,14 +337,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:gravity="end">
 
                     <TextView
                         android:id="@+id/bike7_occupancy"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:layout_weight="1"
                         android:text="@string/frej"
                         android:textAlignment="viewEnd"
                         android:textSize="24sp" />
