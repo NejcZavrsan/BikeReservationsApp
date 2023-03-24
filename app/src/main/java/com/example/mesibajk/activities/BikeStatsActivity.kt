@@ -42,7 +42,7 @@ class BikeStatsActivity : AppCompatActivity() {
         for (r in currentBikeRides) {
             totalDistance += r.distance!!
         }
-        bikeNameView.text = " -  " + currentBikeName
+        bikeNameView.text = " -  $currentBikeName$"
         sumDistanceView.text = totalDistance.toString()
         sumRidesView.text = currentBikeRides.size.toString()
 

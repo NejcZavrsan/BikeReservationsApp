@@ -21,7 +21,6 @@ import java.util.*
 class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     lateinit var dbHelper: DatabaseHelper
-
     lateinit var spinnerBike: Spinner
     lateinit var spinnerDepartment: Spinner
     lateinit var spinnerPurpose: Spinner
@@ -61,7 +60,6 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         setupSpinners()
         setupDistanceSeekBar()
 
-
         // below code for saving the bike reservation
         val addBikeReservationButton = findViewById<Button>(R.id.add_ride_btn)
         addBikeReservationButton.setOnClickListener {
@@ -72,7 +70,6 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                 inputRiderTil.error = if (inputRiderView.text.isBlank()) {
                     getString(R.string.required_field)
                 } else null
-
             }
         }
     }
@@ -110,10 +107,6 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         val endUnixTime = dateToUnix(endDateTime)
 
         if (startUnixTime != null && endUnixTime != null) {
-            Log.d("test", "DateTime start: $startDateTime")
-            Log.d("test", "DateTime endt: $endDateTime")
-            Log.d("test", "Unix start: $startUnixTime")
-            Log.d("test", "Unix end: $endUnixTime")
 
             val newRide = Ride(
                 inputBikeId,
@@ -132,9 +125,7 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         } else {
             Toast.makeText(this, "Izberite termin rezervacije", Toast.LENGTH_SHORT).show()
         }
-
     }
-
 
     private fun setupDatePickers() {
         startTimeView.setOnClickListener {
@@ -170,7 +161,6 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                     seekBarEndpoint = seekbar.progress
                 }
             }
-
         })
     }
 
@@ -183,9 +173,7 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
             R.array.bikes_array,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
             spinnerBike.adapter = adapter
         }
         spinnerBike.onItemSelectedListener = this
@@ -197,9 +185,7 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
             R.array.departments_array,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
             spinnerDepartment.adapter = adapter
         }
         spinnerDepartment.onItemSelectedListener = this
@@ -211,9 +197,7 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
             R.array.purpose_array,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
             spinnerPurpose.adapter = adapter
         }
         spinnerPurpose.onItemSelectedListener = this
@@ -243,6 +227,4 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
     override fun onNothingSelected(p0: AdapterView<*>?) {
 
     }
-
-
 }

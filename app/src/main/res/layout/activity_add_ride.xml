@@ -33,6 +33,7 @@
                     app:srcCompat="@drawable/mesi_bajk_logo" />
 
                 <TextView
+                    android:id="@+id/reservationTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="6dp"
@@ -52,6 +53,7 @@
                 android:layout_marginEnd="32dp" >
 
                 <TextView
+                    android:id="@+id/izberi_kolo_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/izberi_kolo"/>
@@ -90,6 +92,7 @@
             android:layout_marginEnd="32dp" >
 
             <TextView
+                android:id="@+id/izberi_oddelek_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/izberi_svoj_oddelek"/>
@@ -173,6 +176,7 @@
             android:layout_marginEnd="32dp" >
 
             <TextView
+                android:id="@+id/izberi_razdaljo_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/oznaci_razdaljo"/>
@@ -223,6 +227,7 @@
             android:layout_marginEnd="32dp" >
 
             <TextView
+                android:id="@+id/namen_izposoje_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/izberi_namen_izposoje"/>

@@ -47,14 +47,14 @@ class MainActivity : AppCompatActivity() {
         bikeDao = dbHelper.getBikeRuntimeExceptionDao()!!
         rideDao = dbHelper.getRideRuntimeExceptionDao()!!
 
-        // Check first launch info
+        // Check first launch info and create the bikes
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE)
         val isFirstLaunch: Boolean = sharedPreferences.getBoolean(FIRST_LAUNCH, true)
         if (isFirstLaunch) {
             createSevenBikes()
         }
 
-
+        // Add reservation button
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
             val intentAddRide = Intent(this, AddRideActivity::class.java)
