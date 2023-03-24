@@ -40,13 +40,9 @@ class MainActivity : AppCompatActivity() {
         fab.setOnClickListener {
             val intentAddRide = Intent(this, AddRideActivity::class.java)
             startActivity(intentAddRide)
-
         }
 
-        // Set first launch to false
-        val editor = sharedPreferences.edit()
-        editor.putBoolean(FIRST_LAUNCH, false)
-        editor.commit()
+        setFirstLaunchFalse()
     }
 
     private fun createSevenBikes() {
@@ -89,9 +85,13 @@ class MainActivity : AppCompatActivity() {
         bike6Name.text = bike6[0].name
         bike7Name.text = bike7[0].name
 
-
-
         OpenHelperManager.releaseHelper()
+    }
+
+    private fun setFirstLaunchFalse() {
+        val editor = sharedPreferences.edit()
+        editor.putBoolean(FIRST_LAUNCH, false)
+        editor.commit()
     }
 
     companion object {

@@ -5,7 +5,9 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.textfield.TextInputLayout
 import com.j256.ormlite.android.apptools.OpenHelperManager
+import com.j256.ormlite.dao.RuntimeExceptionDao
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -27,17 +29,21 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
     lateinit var inputDepartment: String
     lateinit var inputPurpose: String
     var inputBike: String = ""
+    lateinit var bikeDao: RuntimeExceptionDao<Bike, Int>
+    lateinit var rideDao: RuntimeExceptionDao<Ride, Int>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_ride)
 
+        // setup database access
         dbHelper = OpenHelperManager.getHelper(this, DatabaseHelper::class.java)
-        val bikeDao = dbHelper.getBikeRuntimeExceptionDao()
-        val rideDao = dbHelper.getRideRuntimeExceptionDao()
+        bikeDao = dbHelper.getBikeRuntimeExceptionDao()!!
+        rideDao = dbHelper.getRideRuntimeExceptionDao()!!
 
         // setup UI
         val inputRiderView = findViewById<EditText>(R.id.edit_text_rider)
+        val inputRiderTil = findViewById<TextInputLayout>(R.id.edit_text_rider_til)
         textDistance = findViewById(R.id.textDistance)
         startTimeView = findViewById<EditText>(R.id.startTime)
         startDateView = findViewById<EditText>(R.id.startDate)
@@ -49,56 +55,72 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
 
 
         // below code for saving the bike reservation
-        val addRideButton = findViewById<Button>(R.id.add_ride_btn)
-        addRideButton.setOnClickListener {
-            Log.d("test", "All bikes: ${bikeDao?.queryForAll()}")
-            Log.d("test", "Input bike: $inputBike")
-            val inputBikeList = bikeDao?.queryForEq("name", inputBike)
-            var inputBikeId = 0
-            if (inputBikeList != null) {
-                inputBikeId = inputBikeList[0].id
+        val addBikeReservationButton = findViewById<Button>(R.id.add_ride_btn)
+        addBikeReservationButton.setOnClickListener {
+            if (inputRiderView.text.toString().isNotBlank()) {
+                addBikeReservation()
+            } else {
+                // Show errors on fields that are not valid
+                inputRiderTil.error = if (inputRiderView.text.isBlank()) {
+                    getString(R.string.required_field)
+                } else null
+
             }
-// "yyyy-MM-dd HH:mm:ss"
-            val startDateTime =  rideTime["start_YYYY"] +
-                    "-" +
-                    rideTime["start_MM"] +
-                    "-" +
-                    rideTime["start_DD"] +
-                    " " +
-                    rideTime["start_hh"] +
-                    ":" +
-                    rideTime["start_MM"] +
-                    ":00"
-            val endDateTime =  rideTime["end_YYYY"] +
-                    "-" +
-                    rideTime["end_MM"] +
-                    "-" +
-                    rideTime["end_DD"] +
-                    " " +
-                    rideTime["end_hh"] +
-                    ":" +
-                    rideTime["end_MM"] +
-                    ":00"
-
-
-            val startUnixTime = dateToUnix(startDateTime)
-            val endUnixTime = dateToUnix(endDateTime)
-            Log.d("test", "Unix start"+startUnixTime.toString())
-            Log.d("test", "Unix end"+endUnixTime.toString())
-            val newRide = Ride(
-                inputBikeId,
-                inputRiderView.text.toString(),
-                inputDepartment,
-                startUnixTime!!,
-                endUnixTime!!,
-                seekBarEndpoint,
-                inputPurpose
-            )
-            rideDao!!.create(newRide)
-            val listOfRides = rideDao!!.queryForAll()
-            Log.d("test", listOfRides.toString())
         }
     }
+
+    private fun addBikeReservation() {
+        // get bike id
+        val inputBikeList = bikeDao?.queryForEq("name", inputBike)
+        var inputBikeId = 0
+        if (inputBikeList != null) {
+            inputBikeId = inputBikeList[0].id
+        }
+
+        // get reservation times ("yyyy-MM-dd HH:mm:ss" -> unix)
+        val startDateTime =  rideTime["start_YYYY"] +
+                "-" +
+                rideTime["start_MM"] +
+                "-" +
+                rideTime["start_DD"] +
+                " " +
+                rideTime["start_hh"] +
+                ":" +
+                rideTime["start_MM"] +
+                ":00"
+        val endDateTime =  rideTime["end_YYYY"] +
+                "-" +
+                rideTime["end_MM"] +
+                "-" +
+                rideTime["end_DD"] +
+                " " +
+                rideTime["end_hh"] +
+                ":" +
+                rideTime["end_MM"] +
+                ":00"
+
+        val startUnixTime = dateToUnix(startDateTime)
+        val endUnixTime = dateToUnix(endDateTime)
+        Log.d("test", "Unix start"+startUnixTime.toString())
+        Log.d("test", "Unix end"+endUnixTime.toString())
+
+        val newRide = Ride(
+            inputBikeId,
+            "inputRiderView.text.toString()",
+            inputDepartment,
+            startUnixTime!!,
+            endUnixTime!!,
+            seekBarEndpoint,
+            inputPurpose
+        )
+        rideDao!!.create(newRide)
+        val listOfRides = rideDao!!.queryForAll()
+        Log.d("test", listOfRides.toString())
+        Toast.makeText(this, "Rezervacija uspešno shranjena", Toast.LENGTH_SHORT).show()
+        onBackPressed()
+    }
+
+
     private fun setupDatePickers() {
         startTimeView.setOnClickListener {
             TimePickerFragment(rideTime, startTimeView, endTimeView).show(supportFragmentManager, "startTimePicker")

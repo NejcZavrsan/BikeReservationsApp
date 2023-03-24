@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">MesiBajk</string>
+    <string name="required_field">Polje je obvezno!</string>
 
     <string-array name="bikes_array">
         <item>Bike1</item>
@@ -31,4 +32,10 @@
     <string name="rezervacija_kolesa">- Rezervacija kolesa</string>
     <string name="start_date">Start date</string>
     <string name="end_date">End date</string>
+    <string name="izberi_kolo">Izberi kolo</string>
+    <string name="izberi_svoj_oddelek">Izberi svoj oddelek</string>
+    <string name="izberi_namen_izposoje">Izberi namen izposoje:</string>
+    <string name="oznaci_razdaljo">Označi predvideno razdaljo poti</string>
+    <string name="frej">FREJ</string>
+    <string name="vnesi_ime">Vnesi ime</string>
 </resources>

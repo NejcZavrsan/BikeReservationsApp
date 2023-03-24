@@ -61,14 +61,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
-                        android:text="FREE"
+                        android:text="@string/frej"
                         android:textAlignment="viewEnd"
                         android:textSize="24sp" />
 
                     <ImageView
                         android:id="@+id/bike1_icon"
-                        android:layout_width="24dp"
-                        android:layout_height="match_parent" />
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@drawable/baseline_circle_green"/>
 
                 </LinearLayout>
 
@@ -108,14 +109,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
-                        android:text="FREE"
+                        android:text="@string/frej"
                         android:textAlignment="viewEnd"
                         android:textSize="24sp" />
 
                     <ImageView
                         android:id="@+id/bike2_icon"
-                        android:layout_width="24dp"
-                        android:layout_height="match_parent" />
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@drawable/baseline_circle_green" />
 
                 </LinearLayout>
 
@@ -154,14 +156,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
-                        android:text="FREE"
+                        android:text="@string/frej"
                         android:textAlignment="viewEnd"
                         android:textSize="24sp" />
 
                     <ImageView
                         android:id="@+id/bike3_icon"
-                        android:layout_width="24dp"
-                        android:layout_height="match_parent" />
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@drawable/baseline_circle_green" />
 
                 </LinearLayout>
 
@@ -200,14 +203,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
-                        android:text="FREE"
+                        android:text="@string/frej"
                         android:textAlignment="viewEnd"
                         android:textSize="24sp" />
 
                     <ImageView
                         android:id="@+id/bike4_icon"
-                        android:layout_width="24dp"
-                        android:layout_height="match_parent" />
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@drawable/baseline_circle_green" />
 
                 </LinearLayout>
 
@@ -246,14 +250,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
-                        android:text="FREE"
+                        android:text="@string/frej"
                         android:textAlignment="viewEnd"
                         android:textSize="24sp" />
 
                     <ImageView
                         android:id="@+id/bike5_icon"
-                        android:layout_width="24dp"
-                        android:layout_height="match_parent" />
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@drawable/baseline_circle_green" />
 
                 </LinearLayout>
 
@@ -292,14 +297,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
-                        android:text="FREE"
+                        android:text="@string/frej"
                         android:textAlignment="viewEnd"
                         android:textSize="24sp" />
 
                     <ImageView
                         android:id="@+id/bike6_icon"
-                        android:layout_width="24dp"
-                        android:layout_height="match_parent" />
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@drawable/baseline_circle_green" />
 
                 </LinearLayout>
 
@@ -339,14 +345,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
-                        android:text="FREE"
+                        android:text="@string/frej"
                         android:textAlignment="viewEnd"
                         android:textSize="24sp" />
 
                     <ImageView
                         android:id="@+id/bike7_icon"
-                        android:layout_width="24dp"
-                        android:layout_height="match_parent" />
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@drawable/baseline_circle_green" />
 
                 </LinearLayout>
 
