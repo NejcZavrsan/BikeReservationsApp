@@ -318,7 +318,6 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
-                android:layout_marginBottom="120dp"
                 android:background="@drawable/bike_background"
                 android:orientation="horizontal"
                 android:paddingHorizontal="24dp"
@@ -358,6 +357,15 @@
                 </LinearLayout>
 
             </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_bikes"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="32dp"
+                android:padding="32dp"
+                tools:itemCount="11"
+                tools:listitem="@layout/bike_view_item" />
 
         </LinearLayout>
 

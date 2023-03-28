@@ -41,4 +41,5 @@
     <string name="vnesi_ime">Vnesi ime</string>
     <string name="skupna_razdalja_km">Skupna razdalja [km]:</string>
     <string name="skupno_t_izposoj">Skupno št. izposoj:</string>
+    <string name="zaseden">ZASEDEN</string>
 </resources>

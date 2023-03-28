@@ -9,6 +9,9 @@ import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.mesibajk.BikeAdapter
 import com.example.mesibajk.model.Bike
 import com.example.mesibajk.database.DatabaseHelper
 import com.example.mesibajk.R
@@ -17,7 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.j256.ormlite.android.apptools.OpenHelperManager
 import com.j256.ormlite.dao.RuntimeExceptionDao
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), BikeAdapter.OnBikeClickListener {
 
     lateinit var dbHelper: DatabaseHelper
     lateinit var sharedPreferences: SharedPreferences
@@ -54,6 +57,11 @@ class MainActivity : AppCompatActivity() {
             createSevenBikes()
         }
 
+        val bikesRecyclerView = findViewById<RecyclerView>(R.id.recycler_view_bikes).apply {
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            adapter = BikeAdapter(bikeDao.queryForAll(), this@MainActivity)
+        }
+
         // Add reservation button
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
@@ -64,6 +72,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        getBikes()
         populateUI()
         setFirstLaunchFalse()
         setOnClickListeners()
@@ -115,18 +124,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun createSevenBikes() {
+        for (i in 1 until 11) {
+            bikeDao.createOrUpdate(Bike(i, "Bajk$i"))
+        }
+    }
 
-        bikeDao.createOrUpdate(Bike(1, "Bike1"))
-        bikeDao.createOrUpdate(Bike(2, "Bike2"))
-        bikeDao.createOrUpdate(Bike(3, "Bike3"))
-        bikeDao.createOrUpdate(Bike(4, "Bike4"))
-        bikeDao.createOrUpdate(Bike(5, "Bike5"))
-        bikeDao.createOrUpdate(Bike(6, "Bike6"))
-        bikeDao.createOrUpdate(Bike(7, "Bike7"))
+
+    private fun getBikes(): List<Bike>? {
+        return bikeDao.queryForAll()
     }
 
     private fun populateUI() {
-
         val listOfBikes = bikeDao.queryForAll()
         val bike1 = bikeDao.queryForId(1)
         val bike2 = bikeDao.queryForId(2)
@@ -266,6 +274,13 @@ class MainActivity : AppCompatActivity() {
         val editor = sharedPreferences.edit()
         editor.putBoolean(FIRST_LAUNCH, false)
         editor.commit()
+    }
+
+    override fun onBikeViewClick(position: Int) {
+        val clickedBike = bikeDao.queryForId(position + 1)
+        val intentBikeStats = Intent(this, BikeStatsActivity::class.java)
+        intentBikeStats.putExtra("bike", clickedBike.name)
+        startActivity(intentBikeStats)
     }
 
     companion object {
