@@ -3,18 +3,14 @@ package com.example.mesibajk.activities
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mesibajk.BikeAdapter
-import com.example.mesibajk.model.Bike
-import com.example.mesibajk.database.DatabaseHelper
 import com.example.mesibajk.R
+import com.example.mesibajk.database.DatabaseHelper
+import com.example.mesibajk.model.Bike
 import com.example.mesibajk.model.Ride
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.j256.ormlite.android.apptools.OpenHelperManager
@@ -59,7 +55,16 @@ class MainActivity : AppCompatActivity(), BikeAdapter.OnBikeClickListener {
 
     override fun onResume() {
         super.onResume()
-        // bikesRecyclerView.adapter?.notifyDataSetChanged()
+
+        // Refresh reserved bike, if we're coming from AddRideActivity
+        val extras = intent.extras
+        if (extras != null) {
+            if (extras.containsKey("reserved_bike")) {
+                val reservedBike = extras.getInt("reserved_bike")
+                bikesRecyclerView.adapter?.notifyItemChanged(reservedBike)
+            }
+        }
+
         setFirstLaunchFalse()
     }
 

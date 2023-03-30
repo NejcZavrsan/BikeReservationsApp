@@ -1,5 +1,6 @@
 package com.example.mesibajk.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -126,7 +127,11 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
             val listOfRides = rideDao!!.queryForAll()
             Log.d("test", listOfRides.toString())
             Toast.makeText(this, "Rezervacija uspešno shranjena", Toast.LENGTH_SHORT).show()
-            onBackPressed()
+
+            // Tell main activity which bike in recyclerView to refresh
+            val intentBikeStats = Intent(this, MainActivity::class.java)
+            intentBikeStats.putExtra("reserved_bike", inputBikeId)
+            startActivity(intentBikeStats)
         } else {
             Toast.makeText(this, "Izberite termin rezervacije", Toast.LENGTH_SHORT).show()
         }
