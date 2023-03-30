@@ -17,6 +17,7 @@ import com.j256.ormlite.dao.RuntimeExceptionDao
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
@@ -91,7 +92,7 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                 " " +
                 rideTime["start_hh"] +
                 ":" +
-                rideTime["start_MM"] +
+                rideTime["start_mm"] +
                 ":00"
         val endDateTime =  rideTime["end_YYYY"] +
                 "-" +
@@ -101,10 +102,14 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                 " " +
                 rideTime["end_hh"] +
                 ":" +
-                rideTime["end_MM"] +
+                rideTime["end_mm"] +
                 ":00"
         val startUnixTime = dateToUnix(startDateTime)
         val endUnixTime = dateToUnix(endDateTime)
+        val currentUnixTime = System.currentTimeMillis()
+        Log.d("time", "CurrentUnixTime in minutes: ${currentUnixTime/60000}")
+        Log.d("time", "StartUnixTime in minutes: ${startUnixTime!!/60000}")
+        Log.d("time", "EndUnixTime in minutes: ${endUnixTime!!/60000}")
 
         if (startUnixTime != null && endUnixTime != null) {
 
@@ -168,10 +173,10 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
 
         // Setup spinner for bike selection
         spinnerBike = findViewById<Spinner>(R.id.spinner_bike)
-        ArrayAdapter.createFromResource(
+        ArrayAdapter(
             this,
-            R.array.bikes_array,
-            android.R.layout.simple_spinner_item
+            android.R.layout.simple_spinner_item,
+            getBikeNames()
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinnerBike.adapter = adapter
@@ -226,5 +231,14 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
 
+    }
+
+    private fun getBikeNames(): ArrayList<String> {
+        val bikeList = bikeDao.queryForAll()
+        val bikeNames = arrayListOf<String>()
+        for (bike in bikeList) {
+            bikeNames.add(bike.name)
+        }
+        return bikeNames
     }
 }

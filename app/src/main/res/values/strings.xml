@@ -2,13 +2,13 @@
     <string name="app_name">MesiBajk</string>
 
     <string-array name="bikes_array">
-        <item>Bike1</item>
-        <item>Bike2</item>
-        <item>Bike3</item>
-        <item>Bike4</item>
-        <item>Bike5</item>
-        <item>Bike6</item>
-        <item>Bike7</item>
+        <item>Bajk1</item>
+        <item>Bajk2</item>
+        <item>Bajk3</item>
+        <item>Bajk4</item>
+        <item>Bajk5</item>
+        <item>Bajk6</item>
+        <item>Bajk7</item>
     </string-array>
 
     <string-array name="departments_array">
