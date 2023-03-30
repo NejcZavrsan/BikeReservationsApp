@@ -29,7 +29,7 @@ class AddRideActivityTests {
         onView(withId(R.id.spinner_bike)).check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
         onView(withId(R.id.spinner_department)).check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
         onView(withId(R.id.spinner_purpose)).check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
-        onView(withId(R.id.seekBarDistance)).check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
+        onView(withId(R.id.seek_bar_distance)).check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
         onView(withId(R.id.add_ride_btn)).check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
     }
 

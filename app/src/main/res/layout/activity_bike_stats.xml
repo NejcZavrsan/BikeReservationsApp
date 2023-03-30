@@ -18,7 +18,7 @@
             android:layout_marginHorizontal="32dp">
 
             <LinearLayout
-                android:id="@+id/TitleLayout"
+                android:id="@+id/title_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -32,7 +32,7 @@
                     app:srcCompat="@drawable/mesi_bajk_logo" />
 
                 <TextView
-                    android:id="@+id/bikeTitleText"
+                    android:id="@+id/bike_title_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="6dp"
@@ -57,7 +57,7 @@
                     android:textSize="16sp"/>
 
                 <TextView
-                    android:id="@+id/sumDistance"
+                    android:id="@+id/sum_distance"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -80,7 +80,7 @@
                     android:textSize="16sp"/>
 
                 <TextView
-                    android:id="@+id/sumRides"
+                    android:id="@+id/sum_rides"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

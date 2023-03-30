@@ -8,6 +8,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mesibajk.*
 import com.example.mesibajk.database.DatabaseHelper
+import com.example.mesibajk.databinding.ActivityAddRideBinding
 import com.example.mesibajk.fragments.DatePickerFragment
 import com.example.mesibajk.fragments.TimePickerFragment
 import com.example.mesibajk.model.Bike
@@ -22,19 +23,10 @@ import kotlin.collections.ArrayList
 
 class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
+    private lateinit var binding: ActivityAddRideBinding
     lateinit var dbHelper: DatabaseHelper
-    lateinit var spinnerBike: Spinner
-    lateinit var spinnerDepartment: Spinner
-    lateinit var spinnerPurpose: Spinner
-    lateinit var inputRiderView: EditText
-    lateinit var startTimeView: TextView
-    lateinit var startDateView: TextView
-    lateinit var endTimeView: TextView
-    lateinit var endDateView: TextView
     var rideTime: MutableMap<String, String> = mutableMapOf()
-    lateinit var seekBarDistance: SeekBar
-    var seekBarEndpoint: Int = 0
-    lateinit var textDistance: TextView
+    var seekBarEndpoint: Int = 3
     lateinit var inputDepartment: String
     lateinit var inputPurpose: String
     var inputBike: String = ""
@@ -43,7 +35,8 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_ride)
+        binding = ActivityAddRideBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // setup database access
         dbHelper = OpenHelperManager.getHelper(this, DatabaseHelper::class.java)
@@ -51,25 +44,17 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         rideDao = dbHelper.getRideRuntimeExceptionDao()!!
 
         // setup UI
-        inputRiderView = findViewById<EditText>(R.id.edit_text_rider)
-        val inputRiderTil = findViewById<TextInputLayout>(R.id.edit_text_rider_til)
-        textDistance = findViewById(R.id.textDistance)
-        startTimeView = findViewById<EditText>(R.id.startTime)
-        startDateView = findViewById<EditText>(R.id.startDate)
-        endTimeView = findViewById<EditText>(R.id.endTime)
-        endDateView = findViewById<EditText>(R.id.endDate)
         setupDatePickers()
         setupSpinners()
         setupDistanceSeekBar()
 
         // below code for saving the bike reservation
-        val addBikeReservationButton = findViewById<Button>(R.id.add_ride_btn)
-        addBikeReservationButton.setOnClickListener {
-            if (inputRiderView.text.toString().isNotBlank()) {
+        binding.addRideBtn.setOnClickListener {
+            if (binding.editTextRider.text.toString().isNotBlank()) {
                 addBikeReservation()
             } else {
                 // Show errors on fields that are not valid
-                inputRiderTil.error = if (inputRiderView.text.isBlank()) {
+                binding.editTextRiderTil.error = if (binding.editTextRider.text.isBlank()) {
                     getString(R.string.required_field)
                 } else null
             }
@@ -116,7 +101,7 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
 
             val newRide = Ride(
                 inputBikeId,
-                inputRiderView.text.toString(),
+                binding.editTextRider.text.toString(),
                 inputDepartment,
                 startUnixTime!!,
                 endUnixTime!!,
@@ -138,28 +123,27 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
     }
 
     private fun setupDatePickers() {
-        startTimeView.setOnClickListener {
-            TimePickerFragment(rideTime, startTimeView, endTimeView).show(supportFragmentManager, "startTimePicker")
+        binding.startTime.setOnClickListener {
+            TimePickerFragment(rideTime, binding.startTime, binding.endTime).show(supportFragmentManager, "startTimePicker")
         }
 
-        startDateView.setOnClickListener {
-            DatePickerFragment(rideTime, startDateView, endDateView).show(supportFragmentManager, "startDatePicker")
+        binding.startDate.setOnClickListener {
+            DatePickerFragment(rideTime, binding.startDate, binding.endDate).show(supportFragmentManager, "startDatePicker")
         }
 
-        endTimeView.setOnClickListener {
-            TimePickerFragment(rideTime, startTimeView, endTimeView).show(supportFragmentManager, "endTimePicker")
+        binding.endTime.setOnClickListener {
+            TimePickerFragment(rideTime, binding.startTime, binding.endTime).show(supportFragmentManager, "endTimePicker")
         }
 
-        endDateView.setOnClickListener {
-            DatePickerFragment(rideTime, startDateView, endDateView).show(supportFragmentManager, "endDatePicker")
+        binding.endDate.setOnClickListener {
+            DatePickerFragment(rideTime, binding.startDate, binding.endDate).show(supportFragmentManager, "endDatePicker")
         }
     }
 
     private fun setupDistanceSeekBar() {
-        seekBarDistance = findViewById<SeekBar>(R.id.seekBarDistance)
-        seekBarDistance.setOnSeekBarChangeListener( object : SeekBar.OnSeekBarChangeListener {
+        binding.seekBarDistance.setOnSeekBarChangeListener( object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, progress: Int, p2: Boolean) {
-                textDistance.text = progress.toString()
+                binding.textDistance.text = progress.toString()
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {
@@ -177,40 +161,37 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
     private fun setupSpinners() {
 
         // Setup spinner for bike selection
-        spinnerBike = findViewById<Spinner>(R.id.spinner_bike)
         ArrayAdapter(
             this,
             android.R.layout.simple_spinner_item,
             getBikeNames()
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinnerBike.adapter = adapter
+            binding.spinnerBike.adapter = adapter
         }
-        spinnerBike.onItemSelectedListener = this
+        binding.spinnerBike.onItemSelectedListener = this
 
         // Setup spinner for department selection
-        spinnerDepartment = findViewById<Spinner>(R.id.spinner_department)
         ArrayAdapter.createFromResource(
             this,
             R.array.departments_array,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinnerDepartment.adapter = adapter
+            binding.spinnerDepartment.adapter = adapter
         }
-        spinnerDepartment.onItemSelectedListener = this
+        binding.spinnerDepartment.onItemSelectedListener = this
 
         // Setup spinner for purpose selection
-        spinnerPurpose = findViewById<Spinner>(R.id.spinner_purpose)
         ArrayAdapter.createFromResource(
             this,
             R.array.purpose_array,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinnerPurpose.adapter = adapter
+            binding.spinnerPurpose.adapter = adapter
         }
-        spinnerPurpose.onItemSelectedListener = this
+        binding.spinnerPurpose.onItemSelectedListener = this
     }
 
     fun dateToUnix(dateToConvert: String): Long? {
@@ -228,9 +209,9 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
     override fun onItemSelected(parent: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
         val selectedItem = parent?.getItemAtPosition(position)
         when (parent) {
-            spinnerBike -> inputBike = selectedItem as String
-            spinnerDepartment -> inputDepartment = selectedItem as String
-            spinnerPurpose -> inputPurpose = selectedItem as String
+            binding.spinnerBike -> inputBike = selectedItem as String
+            binding.spinnerDepartment -> inputDepartment = selectedItem as String
+            binding.spinnerPurpose -> inputPurpose = selectedItem as String
         }
     }
 

@@ -17,7 +17,7 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/TitleLayout"
+                android:id="@+id/title_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="32dp"
@@ -33,7 +33,7 @@
                     app:srcCompat="@drawable/mesi_bajk_logo" />
 
                 <TextView
-                    android:id="@+id/reservationTitle"
+                    android:id="@+id/reservation_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="6dp"
@@ -105,7 +105,7 @@
         </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayout9"
+                android:id="@+id/linear_layout_time_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
@@ -120,7 +120,7 @@
                     android:layout_marginEnd="32dp">
 
                     <TextView
-                        android:id="@+id/startTime"
+                        android:id="@+id/start_time"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:layout_weight="1"
@@ -129,7 +129,7 @@
                         android:textAlignment="center"/>
 
                     <TextView
-                        android:id="@+id/startDate"
+                        android:id="@+id/start_date"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:layout_weight="1"
@@ -146,7 +146,7 @@
                     android:layout_marginStart="32dp">
 
                     <TextView
-                        android:id="@+id/endTime"
+                        android:id="@+id/end_time"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:layout_weight="1"
@@ -155,7 +155,7 @@
                         android:textAlignment="center"/>
 
                     <TextView
-                        android:id="@+id/endDate"
+                        android:id="@+id/end_date"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:layout_weight="1"
@@ -182,7 +182,7 @@
                 android:text="@string/oznaci_razdaljo"/>
 
             <SeekBar
-                android:id="@+id/seekBarDistance"
+                android:id="@+id/seek_bar_distance"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:max="20"
@@ -199,10 +199,10 @@
                 android:layout_marginHorizontal="32dp">
 
                 <TextView
-                    android:id="@+id/textDistance"
+                    android:id="@+id/text_distance"
                     android:layout_width="48dp"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/seekBarDistance"
+                    app:layout_constraintTop_toBottomOf="@id/seek_bar_distance"
                     android:text="3"
                     android:textSize="24sp"
                     android:textAlignment="viewEnd"/>
@@ -211,7 +211,7 @@
                     android:id="@+id/km"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/seekBarDistance"
+                    app:layout_constraintTop_toBottomOf="@id/seek_bar_distance"
                     android:text="@string/km"
                     android:textSize="24sp"
                     android:textAlignment="viewStart"/>

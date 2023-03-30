@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mesibajk.BikeAdapter
 import com.example.mesibajk.R
 import com.example.mesibajk.database.DatabaseHelper
+import com.example.mesibajk.databinding.ActivityMainBinding
 import com.example.mesibajk.model.Bike
 import com.example.mesibajk.model.Ride
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -18,15 +19,16 @@ import com.j256.ormlite.dao.RuntimeExceptionDao
 
 class MainActivity : AppCompatActivity(), BikeAdapter.OnBikeClickListener {
 
+    private lateinit var binding: ActivityMainBinding
     lateinit var dbHelper: DatabaseHelper
     lateinit var sharedPreferences: SharedPreferences
     lateinit var bikeDao: RuntimeExceptionDao<Bike, Int>
     lateinit var rideDao: RuntimeExceptionDao<Ride, Int>
-    private lateinit var bikesRecyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Instantiate helper and dao
         dbHelper = OpenHelperManager.getHelper(this, DatabaseHelper::class.java)
@@ -40,14 +42,14 @@ class MainActivity : AppCompatActivity(), BikeAdapter.OnBikeClickListener {
             createSevenBikes()
         }
 
-        bikesRecyclerView = findViewById<RecyclerView>(R.id.recycler_view_bikes).apply {
+        // Attach layoutManager and Adapter to the recyclerView
+        binding.recyclerViewBikes.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = BikeAdapter(getBikes(), getRides(), this@MainActivity, this@MainActivity)
         }
 
-        // Add the add-ride button
-        val fab = findViewById<FloatingActionButton>(R.id.fab)
-        fab.setOnClickListener {
+        // Configure the add-ride button
+       binding.fab.setOnClickListener {
             val intentAddRide = Intent(this, AddRideActivity::class.java)
             startActivity(intentAddRide)
         }
@@ -61,7 +63,7 @@ class MainActivity : AppCompatActivity(), BikeAdapter.OnBikeClickListener {
         if (extras != null) {
             if (extras.containsKey("reserved_bike")) {
                 val reservedBike = extras.getInt("reserved_bike")
-                bikesRecyclerView.adapter?.notifyItemChanged(reservedBike)
+                binding.recyclerViewBikes.adapter?.notifyItemChanged(reservedBike)
             }
         }
 
