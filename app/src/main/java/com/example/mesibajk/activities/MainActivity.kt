@@ -1,5 +1,6 @@
 package com.example.mesibajk.activities
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -55,24 +56,19 @@ class MainActivity : AppCompatActivity(), BikeAdapter.OnBikeClickListener {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onResume() {
         super.onResume()
 
-        // Refresh reserved bike, if we're coming from AddRideActivity
-        val extras = intent.extras
-        if (extras != null) {
-            if (extras.containsKey("reserved_bike")) {
-                val reservedBike = extras.getInt("reserved_bike")
-                binding.recyclerViewBikes.adapter?.notifyItemChanged(reservedBike)
-            }
-        }
+        // Refresh bikes' availability
+        binding.recyclerViewBikes.adapter?.notifyDataSetChanged()
 
         setFirstLaunchFalse()
     }
 
     private fun createSevenBikes() {
         for (i in 1 .. 8) {
-            bikeDao.createOrUpdate(Bike(i, "Bajki$i"))
+            bikeDao.createOrUpdate(Bike(i, "Bajk$i"))
         }
     }
 

@@ -115,7 +115,6 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
 
             // Tell main activity which bike in recyclerView to refresh
             val intentBikeStats = Intent(this, MainActivity::class.java)
-            intentBikeStats.putExtra("reserved_bike", inputBikeId)
             startActivity(intentBikeStats)
         } else {
             Toast.makeText(this, "Izberite termin rezervacije", Toast.LENGTH_SHORT).show()
