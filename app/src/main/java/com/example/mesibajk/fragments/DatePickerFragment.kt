@@ -18,7 +18,7 @@ class DatePickerFragment(
         // Use the current date as the default date in the picker
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)+1
+        val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
 
         // Create a new instance of DatePickerDialog and return it
@@ -29,7 +29,7 @@ class DatePickerFragment(
         when (this.tag) {
             "startDatePicker" -> {
                 val yearString = year.toString()
-                val monthString = formatToTwoPlaces(month)
+                val monthString = formatToTwoPlaces(month+1)
                 val dayString = formatToTwoPlaces(day)
                 val startYMD = ("$yearString-$monthString-$dayString")
                 rideTime["start_YYYY"] = yearString
@@ -39,7 +39,7 @@ class DatePickerFragment(
             }
             "endDatePicker" -> {
                 val yearString = year.toString()
-                val monthString = formatToTwoPlaces(month)
+                val monthString = formatToTwoPlaces(month+1)
                 val dayString = formatToTwoPlaces(day)
                 val endYMD = ("$yearString-$monthString-$dayString")
                 rideTime["end_YYYY"] = yearString

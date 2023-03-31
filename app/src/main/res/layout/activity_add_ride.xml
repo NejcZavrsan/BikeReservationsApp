@@ -121,7 +121,7 @@
 
                     <TextView
                         android:id="@+id/start_time"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:hint="@string/start_time"
@@ -130,7 +130,7 @@
 
                     <TextView
                         android:id="@+id/start_date"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:hint="@string/start_date"
@@ -147,7 +147,7 @@
 
                     <TextView
                         android:id="@+id/end_time"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:hint="@string/end_time"
@@ -156,7 +156,7 @@
 
                     <TextView
                         android:id="@+id/end_date"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:hint="@string/end_date"

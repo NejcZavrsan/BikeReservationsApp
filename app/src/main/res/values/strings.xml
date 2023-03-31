@@ -23,16 +23,16 @@
         <item>Sluzbeni</item>
     </string-array>
 
-    <string name="occupied">ZASEDEN</string>
+    <string name="occupied">ODDAN</string>
     <string name="required_field">Polje je obvezno!</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="start_time">Start time</string>
-    <string name="end_time">End time</string>
+    <string name="start_time">Začetek rezervacije:\nČas </string>
+    <string name="end_time">Konec rezervacije:\nČas</string>
     <string name="rezerviraj">Rezerviraj</string>
     <string name="km">km</string>
     <string name="rezervacija_kolesa">- Rezervacija kolesa</string>
-    <string name="start_date">Start date</string>
-    <string name="end_date">End date</string>
+    <string name="start_date">Datum</string>
+    <string name="end_date">Datum</string>
     <string name="izberi_kolo">Izberi kolo</string>
     <string name="izberi_svoj_oddelek">Izberi svoj oddelek</string>
     <string name="izberi_namen_izposoje">Izberi namen izposoje:</string>
@@ -41,5 +41,4 @@
     <string name="vnesi_ime">Vnesi ime</string>
     <string name="skupna_razdalja_km">Skupna razdalja [km]:</string>
     <string name="skupno_t_izposoj">Skupno št. izposoj:</string>
-    <string name="zaseden">ZASEDEN</string>
 </resources>

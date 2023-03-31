@@ -25,13 +25,13 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
 
     private lateinit var binding: ActivityAddRideBinding
     lateinit var dbHelper: DatabaseHelper
+    lateinit var bikeDao: RuntimeExceptionDao<Bike, Int>
+    lateinit var rideDao: RuntimeExceptionDao<Ride, Int>
     var rideTime: MutableMap<String, String> = mutableMapOf()
     var seekBarEndpoint: Int = 3
     lateinit var inputDepartment: String
     lateinit var inputPurpose: String
     var inputBike: String = ""
-    lateinit var bikeDao: RuntimeExceptionDao<Bike, Int>
-    lateinit var rideDao: RuntimeExceptionDao<Ride, Int>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,6 +93,8 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         val startUnixTime = dateToUnix(startDateTime)
         val endUnixTime = dateToUnix(endDateTime)
         val currentUnixTime = System.currentTimeMillis()
+        Log.d("time", "StartDateTime: $startDateTime")
+        Log.d("time", "EndDateTime: $endDateTime")
         Log.d("time", "CurrentUnixTime in minutes: ${currentUnixTime/60000}")
         Log.d("time", "StartUnixTime in minutes: ${startUnixTime!!/60000}")
         Log.d("time", "EndUnixTime in minutes: ${endUnixTime!!/60000}")
@@ -193,18 +195,7 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         binding.spinnerPurpose.onItemSelectedListener = this
     }
 
-    fun dateToUnix(dateToConvert: String): Long? {
-        try {
-            val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.GERMAN)
-            val date: Date? = format.parse(dateToConvert)
-            val timestamp: Long? = date?.time
-            return timestamp
-        } catch (e: ParseException) {
-            e.printStackTrace()
-            return null
-        }
-    }
-
+    // code for in-spinner selection
     override fun onItemSelected(parent: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
         val selectedItem = parent?.getItemAtPosition(position)
         when (parent) {
@@ -216,6 +207,18 @@ class AddRideActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
 
+    }
+
+    fun dateToUnix(dateToConvert: String): Long? {
+        try {
+            val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.GERMAN)
+            val date: Date? = format.parse(dateToConvert)
+            val timestamp: Long? = date?.time
+            return timestamp
+        } catch (e: ParseException) {
+            e.printStackTrace()
+            return null
+        }
     }
 
     private fun getBikeNames(): ArrayList<String> {
